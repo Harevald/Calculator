@@ -27,13 +27,3 @@ function operate(key, a, b){
         return divide(a,b);
     }
 }
-let a = 7, b = -2;
-console.log(add(a,b));
-console.log(subtract(a,b));
-console.log(multiply(a,b));
-console.log(divide(a,b));
-
-console.log(operate("+", a,b));
-console.log(operate("-", a,b));
-console.log(operate("*", a,b));
-console.log(operate("/", a,b));

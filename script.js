@@ -71,10 +71,6 @@ clear.addEventListener("click", () =>{
     
 })
 percent.addEventListener("click", () =>{
-    if(activeBtn!==""){
-        activeBtn.classList.remove("selected");
-        activeBtn = "";
-    }
     if(a!=="" && b!=="" && sign !==""){
         display.innerText  = parseFloat(percentage(sign, a, b));
         a = display.innerText;

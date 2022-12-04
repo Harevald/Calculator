@@ -12,7 +12,7 @@ button:hover{
     cursor: pointer;
 }
 .operand:active, .action-button:active,
-.selected{
+.selected, .operator:active{
     -webkit-filter: invert(100%);
 }
 body{
@@ -65,6 +65,6 @@ body{
 .operator, #equals{
     background-color: #e99a33;
 }
-.operand{
+.operand, #decimal{
     background-color: #217C7E;
 }

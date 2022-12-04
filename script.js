@@ -13,54 +13,80 @@ function divide(a,b){
     else
         return a/b;
 }
-function operate(key, a, b){
-    if(key==="+"){
+function opposite(a){
+    return -1 * a;
+}
+function percent(a){
+    return 1/100 * a;
+}
+function operate(sign, a, b){
+    a = parseFloat(a);
+    b = parseFloat(b);
+    if(sign==="+"){
         return add(a,b);
     }
-    else if(key==="-"){
+    else if(sign==="-"){
         return subtract(a,b);
     }
-    else if(key==="*"){
+    else if(sign==="*"){
         return multiply(a,b);
     }
-    else if(key==="/"){
+    else if(sign==="/"){
         return divide(a,b);
     }
 }
-
 const operators = document.querySelectorAll(".operator"); 
 const operands = document.querySelectorAll(".operand");
+const equals = document.getElementById("equals");
+const decimal = document.getElementById("decimal");
 let display = document.getElementById("display-number");
-let activeBtn = false;
+let activeBtn = "";
 let a="", b="";
 let sign = "";
-a = 1, b=2;
-operands.forEach(operand => {
+equals.addEventListener("click", () =>{
+    if(a!=="" && b!=="" && sign !==""){
+        display.innerText = operate(sign, a, b);
+        a = display.innerText;
+        b = "";
+    }
+})
+
+operands.forEach(operand => { //What happens when you click number
     operand.addEventListener("click", () =>{
-        
-        a+=operand.value;
-        console.log(operand);
-        console.log(a);
-        display.innerText = a;
+        if(activeBtn === ""){ //If operator isn't selected store value of  first number and display it
+            a+=operand.value;
+            display.innerText = a;
+            console.log(operand);
+            console.log("a = " + a);
+        }          
+        else{
+            b+=operand.value; //Once operator is selected store value of second number and display it
+            display.innerText = b;
+            console.log(operand);
+            console.log( "b = " + b);
+        }
+        if(b!==""){ //Once you press the number after selecting operator, unselect operator
+            activeBtn.classList.remove('selected');
+        }
     })
 })
-operators.forEach(operator => {
+
+operators.forEach(operator => { //What happens when you click operator
     operator.addEventListener("click", (e) => {
-            if(!operator.classList.contains('selected')){
+            if(!operator.classList.contains('selected') && a!==""){ //When you press operator after storing any number, select it
                 operator.classList.add('selected');
-                sign = operator.innerText;
-                
+                sign = operator.innerText;     
                 activeBtn = e.target;
-                operators.forEach(operator =>{
+                operators.forEach(operator =>{ //Remove selection of other operators to prevent clicking two or more at the same time
                     if(operator!==activeBtn){
                         operator.classList.remove('selected');
                     } 
                 })
-                if(a!=="" && b!==""){
-                    console.log(operate(sign, a, b));
+                if(a!=="" && b!==""){ //When you press operator after pressing two numbers, display outcome of operation and make it a first number of next equation
+                    display.innerText = operate(sign, a, b);
+                    a = display.innerText;
+                    b = "";
                 }
-                
-            }
-            
+            }  
     })
 })

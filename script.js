@@ -16,8 +16,15 @@ function divide(a,b){
 function opposite(a){
     return -1 * a;
 }
-function percentage(a){
-    return 1/100 * a;
+function percentage(sign, a, b){
+     let percentB = b*(1/100)*a;
+     console.log(sign);
+     console.log(a);
+     console.log(b);
+     console.log(operate(sign, a, percentB));
+     let result = operate(sign, a, percentB);
+     return result;
+
 }
 function operate(sign, a, b){
     a = parseFloat(a);
@@ -57,10 +64,23 @@ clear.addEventListener("click", () =>{
     b = "";
     sign = "";
     display.innerText = 0;
-    activeBtn.classList.remove("selected");
-    activeBtn = "";
+    if(activeBtn!==""){
+        activeBtn.classList.remove("selected");
+        activeBtn = "";
+    }
+    
 })
-
+percent.addEventListener("click", () =>{
+    if(activeBtn!==""){
+        activeBtn.classList.remove("selected");
+        activeBtn = "";
+    }
+    if(a!=="" && b!=="" && sign !==""){
+        display.innerText  = parseFloat(percentage(sign, a, b));
+        a = display.innerText;
+        b = "";
+    }
+})
 operands.forEach(operand => { //What happens when you click number
     operand.addEventListener("click", () =>{
         if(activeBtn === ""){ //If operator isn't selected store value of  first number and display it

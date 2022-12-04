@@ -62,7 +62,7 @@ body{
 .action-button{
     background-color: dodgerblue;
 }
-.operator{
+.operator, #equals{
     background-color: #e99a33;
 }
 .operand{

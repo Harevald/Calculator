@@ -34,7 +34,7 @@ let display = document.getElementById("display-number");
 let activeBtn = false;
 let a="", b="";
 let sign = "";
-
+a = 1, b=2;
 operands.forEach(operand => {
     operand.addEventListener("click", () =>{
         
@@ -48,12 +48,18 @@ operators.forEach(operator => {
     operator.addEventListener("click", (e) => {
             if(!operator.classList.contains('selected')){
                 operator.classList.add('selected');
+                sign = operator.innerText;
+                
                 activeBtn = e.target;
                 operators.forEach(operator =>{
                     if(operator!==activeBtn){
                         operator.classList.remove('selected');
                     } 
                 })
+                if(a!=="" && b!==""){
+                    console.log(operate(sign, a, b));
+                }
+                
             }
             
     })

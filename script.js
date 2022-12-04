@@ -27,3 +27,34 @@ function operate(key, a, b){
         return divide(a,b);
     }
 }
+
+const operators = document.querySelectorAll(".operator"); 
+const operands = document.querySelectorAll(".operand");
+let display = document.getElementById("display-number");
+let activeBtn = false;
+let a="", b="";
+let sign = "";
+
+operands.forEach(operand => {
+    operand.addEventListener("click", () =>{
+        
+        a+=operand.value;
+        console.log(operand);
+        console.log(a);
+        display.innerText = a;
+    })
+})
+operators.forEach(operator => {
+    operator.addEventListener("click", (e) => {
+            if(!operator.classList.contains('selected')){
+                operator.classList.add('selected');
+                activeBtn = e.target;
+                operators.forEach(operator =>{
+                    if(operator!==activeBtn){
+                        operator.classList.remove('selected');
+                    } 
+                })
+            }
+            
+    })
+})

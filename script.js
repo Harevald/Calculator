@@ -15,10 +15,6 @@ function divide(a,b){
 }
 function percentage(sign, a, b){
      let percentB = b*(1/100)*a;
-     console.log(sign);
-     console.log(a);
-     console.log(b);
-     console.log(operate(sign, a, percentB));
      let result = operate(sign, a, percentB);
      return result;
 
@@ -103,15 +99,11 @@ operands.forEach(operand => { //What happens when you click number
                     if(activeBtn === ""){ //If operator isn't selected store value of  first number and display it
                         a+=operand.value;
                         display.innerText = a;
-                        console.log(operand);
-                        console.log("a = " + a);
                         
                     }          
                     else{
                         b+=operand.value; //Once operator is selected store value of second number and display it
                         display.innerText = b;
-                        console.log(operand);
-                        console.log( "b = " + b);
                     }
                     if(b!==""){ //Once you press the number after selecting operator, unselect operator
                         activeBtn.classList.remove('selected');

@@ -1,4 +1,4 @@
-#This is calculator project created in HTML + CSS + JavaScript
+# This is calculator project created in HTML + CSS + JavaScript
 <br> You can do basic arithmetic calculations, operate on percentages of first number and decimals. You can also chain multiple numbers together into one calculation.
 <br>
 # Quick instruction:

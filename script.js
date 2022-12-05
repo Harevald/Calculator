@@ -52,12 +52,14 @@ equals.addEventListener("click", () =>{
         display.innerText = operate(sign, a, b);
         a = display.innerText;
         b = "";
+        c = "";
         decimalBool = false;
     }
 })
 clear.addEventListener("click", () =>{
     a = "";
     b = "";
+    c  = "";
     sign = "";
     display.innerText = 0;
     if(activeBtn!==""){
@@ -76,6 +78,7 @@ percent.addEventListener("click", () =>{
 decimal.addEventListener("click", () =>{
     if(decimalBool === false && !display.innerText.includes('.')){
         c = display.innerText + '.';
+        display.innerText = c;
         decimalBool = true;
     }
     

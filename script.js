@@ -13,9 +13,6 @@ function divide(a,b){
     else
         return a/b;
 }
-function opposite(a){
-    return -1 * a;
-}
 function percentage(sign, a, b){
      let percentB = b*(1/100)*a;
      console.log(sign);
@@ -48,6 +45,7 @@ const equals = document.getElementById("equals");
 const decimal = document.getElementById("decimal");
 const clear = document.getElementById("clear");
 const percent = document.getElementById("percent");
+const negative = document.getElementById("negative");
 let display = document.getElementById("display-number");
 let activeBtn = "";
 let a="", b="", c="";
@@ -84,6 +82,18 @@ decimal.addEventListener("click", () =>{
         c = display.innerText + '.';
         decimalBool = true;
     }
+    
+})
+negative.addEventListener("click", () =>{
+    if(a!=="" && b===""){
+        a = -1 * a;
+        display.innerText = a;
+    }
+    if(a!=="" && b!==""){
+        b = -1 * b;
+        display.innerText = b;
+    }
+        
     
 })
 operands.forEach(operand => { //What happens when you click number

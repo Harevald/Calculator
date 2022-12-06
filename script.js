@@ -1,4 +1,7 @@
 function add(a, b) {
+  console.log(a);
+  console.log(b);
+  console.log(a + b);
   return a + b;
 }
 function subtract(a, b) {
@@ -31,7 +34,7 @@ function operate(sign, a, b) {
 }
 function updateDisplay(result) {
   if (typeof result !== "string") result = result.toString();
-  display.innerText = result.substring(0, 12);
+  display.innerText = result.substring(0, 17);
 }
 const operators = document.querySelectorAll(".operator");
 const operands = document.querySelectorAll(".operand");
@@ -75,7 +78,11 @@ percent.addEventListener("click", () => {
   }
 });
 decimal.addEventListener("click", () => {
-  if (decimalBool === false && !display.innerText.includes(".")) {
+  if (
+    decimalBool === false &&
+    !display.innerText.includes(".") &&
+    display.innerText.length < 12
+  ) {
     c = display.innerText + ".";
     updateDisplay(c);
     decimalBool = true;
@@ -99,9 +106,11 @@ operands.forEach((operand) => {
         if (activeBtn === "") {
           //If operator isn't selected store value of  first number and display it
           a += operand.value;
+          a = a.substring(0, 12);
           updateDisplay(a);
         } else {
           b += operand.value; //Once operator is selected store value of second number and display it
+          b = b.substring(0, 12);
           updateDisplay(b);
         }
         if (b !== "") {
@@ -109,8 +118,10 @@ operands.forEach((operand) => {
           activeBtn.classList.remove("selected");
         }
       } else {
-        //When you use decimal numbers, temporarly store number after '.' and combine it with base number
+        //When you use decimal numbers, temporarily store number after '.' and combine it with base number
         c += operand.value;
+        c = c.substring(0, 12);
+        console.log(c);
         updateDisplay(c);
         if (a !== "" && b === "") a = c;
         if (b !== "") b = c;

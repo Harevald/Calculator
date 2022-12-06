@@ -8,7 +8,7 @@ body,
 button {
   height: 100%;
   font-family: "Digital-7", sans-serif;
-  font-size: 1.85rem;
+  font-size: 2rem;
 }
 button:hover {
   cursor: pointer;

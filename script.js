@@ -30,6 +30,7 @@ function operate(sign, a, b) {
   }
 }
 function updateDisplay(result) {
+  if(typeof result !=='string') result = result.toString();
   display.innerText = result.substring(0, 12);
 }
 const operators = document.querySelectorAll(".operator");
@@ -48,7 +49,7 @@ let sign = "";
 let decimalBool = false;
 equals.addEventListener("click", () => {
   if (a !== "" && b !== "" && sign !== "") {
-    display.innerText = operate(sign, a, b);
+    updateDisplay(operate(sign, a, b));
     a = display.innerText;
     b = "";
     c = "";
@@ -60,7 +61,7 @@ clear.addEventListener("click", () => {
   b = "";
   c = "";
   sign = "";
-  display.innerText = 0;
+  updateDisplay(0);
   if (activeBtn !== "") {
     activeBtn.classList.remove("selected");
     activeBtn = "";
@@ -98,10 +99,10 @@ operands.forEach((operand) => {
         if (activeBtn === "") {
           //If operator isn't selected store value of  first number and display it
           a += operand.value;
-          display.innerText = a;
+          updateDisplay(a);
         } else {
           b += operand.value; //Once operator is selected store value of second number and display it
-          display.innerText = b;
+          updateDisplay(b);
         }
         if (b !== "") {
           //Once you press the number after selecting operator, unselect operator
@@ -110,7 +111,7 @@ operands.forEach((operand) => {
       } else {
         //When you use decimal numbers, temporarly store number after '.' and combine it with base number
         c += operand.value;
-        display.innerText = c;
+        updateDisplay(c);
         if (a !== "" && b === "") a = c;
         if (b !== "") b = c;
       }
@@ -136,7 +137,7 @@ operators.forEach((operator) => {
       });
       if (a !== "" && b !== "") {
         //When you press operator after pressing two numbers, display outcome of operation and make it a first number of next equation
-        display.innerText = operate(sign, a, b);
+        updateDisplay(operate(sign, a, b));
         a = display.innerText;
         b = "";
       }

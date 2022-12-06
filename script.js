@@ -64,7 +64,7 @@ clear.addEventListener("click", () => {
   b = "";
   c = "";
   sign = "";
-  updateDisplay(0);
+  updateDisplay("0");
   if (activeBtn !== "") {
     activeBtn.classList.remove("selected");
     activeBtn = "";
@@ -121,7 +121,7 @@ operands.forEach((operand) => {
         //When you use decimal numbers, temporarily store number after '.' and combine it with base number
         c += operand.value;
         c = c.substring(0, 12);
-        console.log(c);
+        decimalBool=false;
         updateDisplay(c);
         if (a !== "" && b === "") a = c;
         if (b !== "") b = c;

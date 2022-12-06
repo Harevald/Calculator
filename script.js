@@ -30,7 +30,7 @@ function operate(sign, a, b) {
   }
 }
 function updateDisplay(result) {
-  if(typeof result !=='string') result = result.toString();
+  if (typeof result !== "string") result = result.toString();
   display.innerText = result.substring(0, 12);
 }
 const operators = document.querySelectorAll(".operator");
